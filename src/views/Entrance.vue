@@ -51,18 +51,71 @@ export default {
         },
         openRemindPage() {
             this.currentTab = 'RemainderVue'
-        }
+        },
     },
     data() {
         return {
             currentTab: 'SingIn',
             tabs: ['SingIn', 'EntranceMenu', 'RegistrationVue', 'Faq', 'RemainderVue']
         }
+    },
+    watch: {
+        currentTab() {
+            if (this.currentTab != 'SingIn' && this.currentTab != 'RemainderVue') {
+                document.body.classList.add('body-closed')
+            } else {
+                document.body.classList.remove('body-closed')
+            }
+
+            // 
+
+            if (window.innerWidth <= 850) {
+                if (this.currentTab == 'RemainderVue') {
+                    document.querySelector('.big-wrapper').classList.add('big-wrapper--reminder')
+                } else {
+                    document.querySelector('.big-wrapper').classList.remove('big-wrapper--reminder')
+                }
+            }
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 850) {
+                    if (this.currentTab == 'RemainderVue') {
+                        document.querySelector('.big-wrapper').classList.add('big-wrapper--reminder')
+                    } else {
+                        console.log('smt')
+                        document.querySelector('.big-wrapper').classList.remove('big-wrapper--reminder')
+                    }
+                }
+            })
+        }
+    },
+    mounted() {
+        if (window.innerWidth <= 1025) {
+            document.querySelector('.entrance').style.minHeight = window.innerHeight - 30 + 'px'
+        }
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 1025) {
+                document.querySelector('.entrance').style.minHeight = window.innerHeight - 30 + 'px'
+            } else {
+                document.querySelector('.entrance').style.minHeight = '940px'
+            }
+        });
+        document.querySelector('.big-wrapper').parentNode.classList.add('app--center');
     }
 }
 </script>
 
 <style lang="scss">
+@import '../assets/scss/_vars.scss';
+
+.app--center {
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .entrance {
     @import '../assets/scss/_vars.scss';
     display: flex;
@@ -72,7 +125,7 @@ export default {
 
     margin-top: auto;
     margin-bottom: auto;
- 
+
     margin-left: auto;
     margin-right: auto;
     background: #FFFFFF;
@@ -89,12 +142,51 @@ export default {
         left: 50%;
         transform: translateX(-50%);
     }
+
     &__wrapper {
         position: relative;
         width: 50%;
         padding: 40px;
         @include adaptiv-value('padding-top', 70, 110, 1);
         @include adaptiv-value('padding-bottom', 70, 110, 1);
+    }
+}
+
+@media (max-width: 1025px) {
+    .body-closed {
+        .entrance::before {
+            content: unset;
+        }
+
+        .entrance__wrapper {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .entrance {
+        flex-direction: column;
+        min-height: unset;
+        padding: 15px;
+        padding-top: 45px;
+        justify-content: center;
+    }
+
+    .entrance::before {
+        content: unset;
+    }
+
+    .entrance__wrapper {
+        padding: 0;
+        position: unset;
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .entrance {
+        justify-content: flex-start;
     }
 }
 </style>

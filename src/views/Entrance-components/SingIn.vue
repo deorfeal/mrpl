@@ -34,7 +34,7 @@
             <button class="sing-in-form__btn" type="submit">
                 Login
             </button>
-            <button class="sing-in-form__link" href="#" @click="$emit('clickOnRemindButton')">
+            <button class="sing-in-form__link" @click="$emit('clickOnRemindButton')">
                 Remind password
             </button>
         </form>
@@ -184,6 +184,50 @@ export default {
             letter-spacing: -0.3px;
             color: #7C7C7C;
         }
+    }
+}
+
+@media (max-width: 1025px) {
+    .sing-in-top {
+        top: 90px;
+    }
+}
+
+@media (max-width: 850px) {
+    .sing-in {
+        padding-bottom: 140px;
+    }
+    .sing-in-form__title {
+        display: none;
+    }
+
+    .sing-in-form__btn {
+        @include adaptiv-phone-value('margin-bottom', 40, 25, 1);
+    }
+    .sing-in-top {
+        top: 30px;
+        left: 20px;
+        right: 20px;
+    }
+    .sing-in-top__btn {
+        @include adaptiv-phone-value('gap', 15, 10, 1);
+    }
+    .sing-in-top__btn-text {
+        @include adaptiv-phone-value('font-size', 17, 14, 1);
+        @include adaptiv-phone-value('line-height', 21, 17, 1);
+    }
+    .sing-in-top__btn-box span {
+        @include adaptiv-phone-value('height', 4, 2, 1);
+    }
+    .sing-in-top__btn-box {
+        @include adaptiv-phone-value('width', 30, 18, 1);
+        @include adaptiv-phone-value('height', 20, 12, 1);
+    }
+}
+
+@media (max-width: 400px) {
+    .sing-in-form {
+        width: 100%;
     }
 }
 </style>

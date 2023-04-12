@@ -30,6 +30,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../assets/scss/_vars.scss';
 .answer {
     display: flex;
     justify-content: center;
@@ -59,6 +60,31 @@ export default {
         max-width: 605px;
         max-height: 309px;
         object-fit: cover;
+    }
+}
+@media (max-width: 1400px) {
+    .answer__img {
+        width: 100%;
+    }
+}
+@media (max-width: 1025px) {
+    .answer {
+        max-width: 610px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (max-width: 400px) {
+    .answer {
+        margin-top: 45px;
+    }
+    .answer__title {
+        @include adaptiv-phone-value('font-size', 20, 17, 1);
+        @include adaptiv-phone-value('line-height', 25, 21, 1);
+        @include adaptiv-phone-value('margin-bottom', 25, 15, 1);
+    }
+    .answer__text {
+        @include adaptiv-phone-value('margin-bottom', 25, 15, 1);
     }
 }
 </style>

@@ -36,6 +36,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../assets/scss/_vars.scss';
 .entrance-menu {
     display: flex;
     justify-content: center;
@@ -77,6 +78,27 @@ export default {
         line-height: 21px;
         letter-spacing: -0.3px;
         color: #413F3F;
+    }
+}
+
+@media (max-width: 1025px) {
+    .entrance-menu {
+        max-width: 610px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+   // @include adaptiv-phone-value('font-size', 17, 14, 1);
+   // @include adaptiv-phone-value('line-height', 21, 17, 1);
+}
+@media (max-width: 400px) {
+    .body-closed {
+        .entrance {
+            justify-content: flex-start;
+        }
+    }
+    .entrance-menu {
+        margin-top: 40px;
     }
 }
 </style>

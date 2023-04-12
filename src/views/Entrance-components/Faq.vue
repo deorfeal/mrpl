@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../assets/scss/_vars.scss';
 .faq {
     display: flex;
     justify-content: center;
@@ -90,6 +91,25 @@ export default {
         }
     }
 
-    &__list-text {}
+    &__list-text {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+@media (max-width: 1025px) {
+    .faq {
+        max-width: 610px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .faq__title {
+        @include adaptiv-phone-value('font-size', 20, 17, 1);
+        @include adaptiv-phone-value('line-height', 25, 21, 1);
+    }
+}
+@media (max-width: 400px) {
+    .faq__inner {
+        margin-top: 50px;
+    }
 }
 </style>

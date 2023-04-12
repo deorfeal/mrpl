@@ -5,7 +5,7 @@ export default {
     return {
 
     }
-  }
+  },
 }
 
 </script>
@@ -15,9 +15,9 @@ export default {
 </template>
 
 <style lang="scss">
+@import 'assets/scss/_vars.scss';
 
 // reset
-
 * {
   padding: 0;
   margin: 0;
@@ -118,16 +118,7 @@ body {
   background: #F6F8FA;
 }
 
-body {
-}
-
-#app {
-  min-height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+body {}
 
 .wrapper {
   display: flex;
@@ -135,8 +126,18 @@ body {
   min-height: 100%;
 }
 
+.wrapper-big {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .main {
   flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 15px 20px;
 }
 
 .footer {
@@ -150,9 +151,22 @@ body {
 }
 
 .big-wrapper {
-  padding: 20px;
   max-width: 1400px;
   width: 100%;
+
+  @include adaptiv-value('padding', 20, 15, 1);
 }
 
+@media (max-width: 1025px) {
+  .big-wrapper {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 750px) {
+  .main {
+    padding: 15px;
+    padding-top: 15px;
+  }
+}
 </style>

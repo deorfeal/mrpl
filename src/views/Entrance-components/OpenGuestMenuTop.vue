@@ -49,6 +49,39 @@ export default {
         height: 25px;
         margin-left: auto;
         max-height: 40px;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+@media (max-width: 1025px) {
+    .menu-top {
+       top: 90px;
+    }
+    .menu-top__btn {
+        @include adaptiv-phone-value('font-size', 17, 14, 1);
+        @include adaptiv-phone-value('line-height', 21, 17, 1);
+        svg {
+            @include adaptiv-phone-value('width', 22, 13, 1);
+            @include adaptiv-phone-value('height', 22, 13, 1);
+        }
+    }
+    .menu-top__back {
+        @include adaptiv-phone-value('width', 25, 15, 1);
+        @include adaptiv-phone-value('height', 25, 15, 1);
+    }
+}
+@media (max-width: 850px) {
+    .menu-top {
+        top: 30px;
+        left: 20px;
+        right: 20px;
+    }
+}
+@media (max-width: 400px) {
+    .registration-form {
+        margin-top: 40px;
     }
 }
 </style>
