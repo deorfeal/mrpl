@@ -6,6 +6,7 @@ import {
 import Entrance from "@/views/Entrance.vue";
 import MyData from "@/views/MyData.vue";
 import Orders from "@/views/Orders.vue";
+import Artists from "@/views/Artists.vue";
 
 const routes = [{
         path: "/",
@@ -21,6 +22,11 @@ const routes = [{
         path: "/orders",
         name: "orders",
         component: Orders,
+    },
+    {
+        path: "/artists",
+        name: "artists",
+        component: Artists,
     },
 ];
 

@@ -140,6 +140,14 @@ body {}
   padding: 0 20px 15px 20px;
 }
 
+.carousel__button {
+  display: none;
+}
+
+.fancybox__content :focus:not(.carousel__button.is-close) {
+  outline: unset;
+}
+
 .footer {
   flex: 0 0 auto;
 }

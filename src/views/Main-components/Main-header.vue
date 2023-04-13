@@ -122,6 +122,7 @@ export default {
         width: 100%;
         height: 100%;
     }
+    z-index: 100;
 }
 
 .header-menu {
@@ -377,9 +378,10 @@ export default {
             background: #677A45;
             border-radius: 100%;
             position: absolute;
-            left: 8px;
+            left: 6px;
             top: 1px;
         }
     }
 }
+
 </style>

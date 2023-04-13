@@ -74,7 +74,6 @@ export default {
 .my-data {
     width: 100%;
     flex-grow: 1;
-    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
     background: #FFFFFF;
@@ -154,6 +153,7 @@ export default {
         }
     }
 }
+
 @media (max-width: 750px) {
     .my-data__btn {
         display: flex;
