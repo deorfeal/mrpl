@@ -7,6 +7,8 @@ import Entrance from "@/views/Entrance.vue";
 import MyData from "@/views/MyData.vue";
 import Orders from "@/views/Orders.vue";
 import Artists from "@/views/Artists.vue";
+import AddArtists from "@/views/AddArtists.vue";
+import EditArtists from "@/views/EditArtists.vue";
 
 const routes = [{
         path: "/",
@@ -28,6 +30,17 @@ const routes = [{
         name: "artists",
         component: Artists,
     },
+    {
+        path: "/add-artists",
+        name: "add-artists",
+        component: AddArtists,
+    },
+    {
+        path: "/edit-artists",
+        name: "edit-artists",
+        component: EditArtists,
+    },
+
 ];
 
 const router = createRouter({
