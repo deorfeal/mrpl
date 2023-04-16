@@ -9,6 +9,7 @@ import Orders from "@/views/Orders.vue";
 import Artists from "@/views/Artists.vue";
 import AddArtists from "@/views/AddArtists.vue";
 import EditArtists from "@/views/EditArtists.vue";
+import Order from "@/views/Order.vue";
 
 const routes = [{
         path: "/",
@@ -40,6 +41,14 @@ const routes = [{
         name: "edit-artists",
         component: EditArtists,
     },
+
+    {
+        path: "/order",
+        name: "order",
+        component: Order,
+    },
+
+    
 
 ];
 
