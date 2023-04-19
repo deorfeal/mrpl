@@ -8,7 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "mpvue-calendar": "^3.0.1",
     "vue": "^3.2.45",
+    "vue-datepicker": "^1.3.0",
     "vue-router": "^4.0.13"
   },
   "devDependencies": {

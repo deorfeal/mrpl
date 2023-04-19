@@ -112,4 +112,12 @@ export default {
         }
     }
 }
+@media (max-width: 750px) {
+    .artist-item {
+        width: 100%;
+    }
+    .artist-item {
+        min-width: unset;
+    }
+}
 </style>

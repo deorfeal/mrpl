@@ -17,7 +17,7 @@
                         </button>
                     </div>
                 </div>
-                <EditArtists :allInfoIsActive="false" :allInfo="valuesForEditArtists"/>
+                <EditArtists :allInfoIsActive="false" :contentIsActive="true" :allInfo="valuesForEditArtists"/>
             </form>
         </main>
     </div>

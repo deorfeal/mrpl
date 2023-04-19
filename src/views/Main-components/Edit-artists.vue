@@ -1,6 +1,6 @@
 <template>
     <div class="edit-artist__inner">
-        <div class="edit-artist__wrapper">
+        <div class="edit-artist__wrapper" v-if="contentIsActive">
             <div class="edit-artist__item edit-artist-item">
                 <div class="edit-artist-item__top" @click="showContent">
                     <p class="edit-artist-item__top-text">
@@ -260,7 +260,7 @@
 <script>
 import CustomSelect from './CustomSelect.vue';
 export default {
-    props: ['allInfoIsActive', 'allInfo'],
+    props: ['allInfoIsActive', 'allInfo', 'contentIsActive'],
     components: {
         CustomSelect
     },
@@ -704,6 +704,11 @@ export default {
         align-items: center;
         width: 280px;
         max-width: 280px;
+        transition: background 0.3s, color 0.3s;
+        &:hover {
+            background: #D4A5B4;
+            color: #fff;
+        }
     }
 }
 

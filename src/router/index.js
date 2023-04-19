@@ -10,6 +10,7 @@ import Artists from "@/views/Artists.vue";
 import AddArtists from "@/views/AddArtists.vue";
 import EditArtists from "@/views/EditArtists.vue";
 import Order from "@/views/Order.vue";
+import Calendar from "@/views/Calendar.vue";
 
 const routes = [{
         path: "/",
@@ -47,8 +48,11 @@ const routes = [{
         name: "order",
         component: Order,
     },
-
-    
+    {
+        path: "/calendar",
+        name: "calendar",
+        component: Calendar,
+    },
 
 ];
 
