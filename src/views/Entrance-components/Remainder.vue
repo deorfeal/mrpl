@@ -3,6 +3,7 @@
         <OpenGuestMenuTop :closeButtonIsActive="false" :backArrowIsActive="true" :backPage="'SingIn'"
             @clickOnBackArrow="clickOnBackArrow" @clickOnCloseButton="$emit('clickOnCloseButton')" />
         <form class="remainder__form remainder-form" action="#">
+            <div class="remainder-form__wrapper" v-if="succesfullWindow != true">
             <h1 class="remainder-form__title">
                 Remind password
             </h1>
@@ -12,9 +13,18 @@
                 </p>
                 <input class="remainder-form__row-input" type="text">
             </div>
-            <button class="remainder-form__btn" type="submit">
+            <button class="remainder-form__btn" type="button" @click="openSuccesfullWindow">
                 Remind
             </button>
+        </div>
+            <div class="remainder-form__inner" v-if="succesfullWindow"> 
+                <p class="remainder-form__text">
+                    Your password has been successfully sent to your email
+                </p>
+                <button class="remainder-form__button" type="button" @click="$emit('clickOnToLoginButton')">
+                    To login
+                </button>
+            </div>
         </form>
     </div>
 </template>
@@ -25,22 +35,76 @@ export default {
     components: {
         OpenGuestMenuTop
     },
+    data() {
+        return {
+            succesfullWindow: false,
+        }
+    },
+    watch: {
+        succesfullWindow () {
+            if ( this.succesfullWindow == true ) {
+                document.querySelector('.entrance').classList.add('entrance--succesfull-window')
+            }
+        }
+    },
     methods: {
         clickOnBackArrow(backPageName) {
             this.$emit('clickOnBackArrow', backPageName)
-        }
-    }
+        },
+        openSuccesfullWindow() {
+            this.succesfullWindow = true
+        },
+    },
 }
 </script>
 
 <style lang="scss">
+.entrance--succesfull-window {
+    justify-content: center !important;
+    overflow: hidden;
+    position: relative;
+    .menu-top__back {
+        display: none;
+    }
+}
 .remainder {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
-
+.remainder-form {
+    &__inner {
+  
+    }
+    &__text {
+        font-size: 17px;
+        line-height: 21px;
+        text-align: center;
+        letter-spacing: -0.3px;
+        color: #413F3F;        
+    }
+    &__button {
+        margin-top: auto;
+        border-top: 1px solid #ECEEF0;
+        font-size: 17px;
+        line-height: 21px;
+        text-align: center;
+        width: 100%;
+        letter-spacing: -0.3px;    
+        color: #82B8E9;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
 .remainder-form {
     width: 320px;
     margin-left: auto;

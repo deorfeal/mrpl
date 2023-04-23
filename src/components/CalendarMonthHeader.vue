@@ -68,6 +68,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   .single-date-picker__year {
     font-size: 17px;
     line-height: 21px;
@@ -80,8 +81,19 @@ export default {
   .single-date-picker__arrow {
     cursor: pointer;
   }
+
   .right {
     transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 550px) {
+  .single-date-picker__calendar-month-header {
+    margin-bottom: 10px;
+    background: #fff;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.05);
+    border-radius: 14px;
+    padding: 13px 8px;
   }
 }
 </style>

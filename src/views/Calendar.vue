@@ -2,7 +2,7 @@
     <div class="wrapper-big">
         <MainHeaderVue :activeMenuOrder="0" />
         <MainBack :title="'Create artist'" />
-        <main class="main main-calendar">
+        <main class="main main-calendar main-edit-artists">
             <form class="main__edit-artist edit-artist" action="#">
                 <div class="edit-artist__top edit-artist-top">
                     <h1 class="edit-artist-top__title">
@@ -21,9 +21,9 @@
                     <div class="edit-artist__calendar edit-artist-calendar">
                         <CalendarView />
                         <div class="edit-artist-calendar__bottom edit-artist-calendar-bottom">
-                            <button class="edit-artist-calendar-bottom__btn" type="button">
+                            <a class="edit-artist-calendar-bottom__btn" data-fancybox href="#new-order">
                                 Create order
-                            </button>
+                            </a>
                             <div class="edit-artist-calendar-bottom__row">
                                 <p class="edit-artist-calendar-bottom__row-text">
                                     Client:
@@ -47,6 +47,82 @@
                         </div>
                     </div>
                     <EditArtists :allInfoIsActive="true" :contentIsActive="false" :allInfo="valuesForEditArtists" />
+                </div>
+            </form>
+            <form class="main__new-order new-order" id="new-order" action="#">
+                <div class="new-order__inner">
+                    <h2 class="new-order__title">
+                        New order
+                    </h2>
+                    <div class="new-order__row">
+                        <p class="new-order__row-text">
+                            Name
+                        </p>
+                        <input class="new-order__row-input" type="text">
+                    </div>
+                    <div class="new-order__row">
+                        <p class="new-order__row-text">
+                            Phone number
+                        </p>
+                        <input class="new-order__row-input" type="text" placeholder="+4 XXX XXX XX XX">
+                    </div>
+                    <div class="new-order__row">
+                        <p class="new-order__row-text">
+                            Date
+                        </p>
+                        <input class="new-order__row-input" type="text" placeholder="MM/DD/YY">
+                    </div>
+                    <div class="new-order__row">
+                        <p class="new-order__row-text">
+                            PLZ
+                        </p>
+                        <input class="new-order__row-input" type="text" placeholder="+-50">
+                    </div>
+                    <div class="new-order__bottom new-order-bottom">
+                        <p class="new-order-bottom__text">
+                            I am interested in:
+                        </p>
+                        <div class="new-order-bottom__inner">
+                            <label class="container">
+                                Wedding presenter &amp; DJ
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">
+                                Singer
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">
+                                Photographer
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">
+                                Additional Services
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">
+                                Catering
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">
+                                Videograph
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="new-order__buttons">
+                    <button class="new-order__buttons-btn is-close" tabindex="0">
+                        Cancel
+                    </button>
+                    <button class="new-order__buttons-btn" type="submit">
+                        Create
+                    </button>
                 </div>
             </form>
         </main>
@@ -86,7 +162,14 @@ export default {
 
 <style lang="scss">
 @import '../assets/scss/_vars.scss';
-
+.edit-artist-all-info__btn {
+    svg:nth-child(1) {
+        display: none;
+    }
+    svg:nth-child(2) {
+        display: block;
+    }
+}
 .main-calendar {
     .edit-artist__wrapper {
         display: none;
@@ -126,6 +209,7 @@ export default {
         color: #677A45;
         margin-bottom: 10px;
         transition: background 0.3s, color 0.3s;
+
         &:hover {
             background: #677A45;
             color: #fff;
@@ -166,6 +250,105 @@ export default {
 
         span {
             color: #413F3F;
+        }
+    }
+}
+
+@media (max-width: 1300px) {
+    .edit-artist__big-wrapper {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .edit-artist__inner {
+        order: -1;
+    }
+
+    .edit-artist-calendar {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 750px) {
+    .edit-artist-calendar-bottom__row {
+        flex-direction: column;
+    }
+    .main-calendar {
+        .edit-artist-all-info {
+            position: relative;
+        }
+        .edit-artist-all-info__btn {
+            left: 50%;
+            top: 0;
+            transform: translateX(300%);
+            right: unset;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .edit-artist-calendar-bottom__btn {
+        display: none;
+    }
+    .edit-artist-top__box {
+        display: none;
+    }
+    .main-calendar .edit-artist {
+        background: unset;
+    }
+    .edit-artist-calendar-bottom__row {
+       padding: 30px 15px 15px 15px;
+    }
+    .edit-artist-calendar-bottom__row::before {
+        bottom: unset;
+        right: 0;
+        height: 16px;
+        border-radius: 14px 14px 0 0;
+        width: 100%;
+    }
+    .edit-artist {
+        box-shadow: unset;
+    }
+    .main-calendar {
+        .edit-artist-all-info__button {
+            display: none;
+            box-shadow: unset;
+        }
+        .edit-artist-all-info__inner {
+            border: unset;
+        }
+        .edit-artist-all-info {
+            border: unset;
+        }
+        .edit-artist-all-info {
+            background: #FFFFFF;
+            border: 1px solid #ECEEF0;
+            box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.05);
+            border-radius: 14px;
+        }
+        .edit-artist-all-info {
+            padding: 25px 15px 25px 15px;
+        }
+        .edit-artist-all-info__inner {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        .edit-artist {
+            padding: 0 !important;
+        }
+        .edit-artist__big-wrapper {
+            gap: 10px;
+        }
+    }
+    .edit-artist-calendar {
+        gap: 10px;
+    }
+    .edit-artist-calendar-bottom__row {
+        gap: 5px;
+    }
+    .main-calendar {
+        .edit-artist-all-info__btn {
+            top: 25px;
         }
     }
 }

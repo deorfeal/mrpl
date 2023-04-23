@@ -42,5 +42,12 @@ td {
   text-align: center;
   border: 1px solid rgba(130, 184, 233, 0.3);
   padding: 20px 0;
+  position: relative;
+}
+@media (max-width: 550px) {
+  td {
+    border: unset;
+    padding: 15px 0;
+  }
 }
 </style>

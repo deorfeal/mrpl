@@ -13,7 +13,7 @@
                 </button>
             </li>
             <li class="entrance-menu__list-item">
-                <button class="entrance-menu__list-btn" href="#" type="button">
+                <button class="entrance-menu__list-btn" href="#" type="button" @click="$emit('clickOnContactsButton')">
                     Contacts
                 </button>
             </li>

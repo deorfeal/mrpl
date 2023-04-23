@@ -51,16 +51,69 @@ export default {
   color: #413F3F;
   cursor: pointer;
   display: block;
+
   &:hover,
   &.single-date-picker__selected {
-    border-radius: 50%;
-    border: 2px solid pink;
+    &::before {
+      content: '';
+      width: 12px;
+      position: absolute;
+      right: 8px;
+      background: #D4A5B4;
+      bottom: 8px;
+      border-radius: 100%;
+      height: 12px;
+    }
   }
 
   &.single-date-picker__today {
-    border-radius: 50%;
-    background-image: linear-gradient(to bottom right, #f1b4b9, #d2b0c3);
+    &::before {
+      content: '';
+      width: 12px;
+      position: absolute;
+      right: 8px;
+      background: #D4A5B4;
+      bottom: 8px;
+      border-radius: 100%;
+      height: 12px;
+    }
   }
 
+}
+
+@media (max-width: 550px) {
+  .single-date-picker__date {
+    font-size: 17px;
+    line-height: 21px;
+    width: 20px;
+    height: 20px;
+  }
+  .single-date-picker__selected {
+    &::before {
+      content: '';
+      width: 6px !important;
+      position: absolute;
+      right: 50% !important;
+      transform: translateX(50%);
+      background: #D4A5B4;
+      bottom: 0px !important;
+      border-radius: 100%;
+      height: 6px !important;
+    }
+  }
+
+  .single-date-picker__today {
+    &::before {
+      content: '';
+      width: 6px !important;
+      position: absolute;
+      right: 50% !important;
+      transform: translateX(50%);
+      background: #D4A5B4;
+      bottom: 0px !important;
+      border-radius: 100%;
+      height: 6px !important;
+    }
+  }
 }
 </style>

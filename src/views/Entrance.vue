@@ -5,7 +5,7 @@
             <div class="entrance__wrapper">
                 <component @clickOnMenuButtton="openGuestMenu" @clickOnCloseButton="closeGuestMenu"
                     @clickOnRegButton="openRegPage" @clickOnBackArrow="openBackPage" @clickOnFaqButton="openFaqPage"
-                    @clickOnFirstQuestion="openAnswerPage" @clickOnRemindButton="openRemindPage" :is="currentTab">
+                    @clickOnFirstQuestion="openAnswerPage" @clickOnRemindButton="openRemindPage"  @clickOnContactsButton="openContactsPage" :is="currentTab">
                 </component>
             </div>
         </div>
@@ -20,6 +20,7 @@ import RegistrationVue from './Entrance-components/Registration.vue';
 import Faq from './Entrance-components/Faq.vue';
 import AnswerVue from './Entrance-components/Answer.vue';
 import RemainderVue from './Entrance-components/Remainder.vue';
+import Contacts from './Entrance-components/Contacts.vue';
 export default {
     components: {
         Aside,
@@ -28,7 +29,8 @@ export default {
         RegistrationVue,
         Faq,
         AnswerVue,
-        RemainderVue
+        RemainderVue,
+        Contacts
     },
     methods: {
         openGuestMenu() {
@@ -52,11 +54,14 @@ export default {
         openRemindPage() {
             this.currentTab = 'RemainderVue'
         },
+        openContactsPage() {
+            this.currentTab = 'Contacts'
+        },
     },
     data() {
         return {
             currentTab: 'SingIn',
-            tabs: ['SingIn', 'EntranceMenu', 'RegistrationVue', 'Faq', 'RemainderVue']
+            tabs: ['SingIn', 'EntranceMenu', 'RegistrationVue', 'Faq', 'RemainderVue', 'Contacts']
         }
     },
     watch: {
