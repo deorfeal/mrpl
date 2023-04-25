@@ -24,14 +24,15 @@
                             <p class="edit-artist-item-row-box__text">
                                 Phone number
                             </p>
-                            <input class="edit-artist-item-row-box__input" type="text" :value="allInfo.phone">
+                            <input class="edit-artist-item-row-box__input edit-artist-item-row-box__input--phone" :value="allInfo.phone" type="tel" id="phone" pattern="\+4 \d{3} \d{3} \d{3}" maxlength="12">
+        
                         </div>
                         <div class="edit-artist-item-row__box edit-artist-item-row-box">
                             <p class="edit-artist-item-row-box__text">
                                 Artist type
                             </p>
                             <CustomSelect
-                                :options="['Wedding presenter & DJ', 'Wedding presenter & DJ 2', 'Wedding presenter & DJ 3', 'Wedding presenter & DJ 4']"
+                                :options="['Фото ', 'Видео', 'Певица', 'Catering', 'Ведущий + DJ', 'DJ']"
                                 :default="'Wedding presenter & DJ'" class="select">
                             </CustomSelect>
                         </div>
@@ -276,6 +277,42 @@ export default {
     },
     mounted() {
         document.querySelector('.wrapper-big').style.minHeight = +window.innerHeight + 'px';
+        
+        const phoneInput = document.querySelector('.edit-artist-item-row-box__input--phone');
+		phoneInput.addEventListener('input', handleInput);
+		phoneInput.addEventListener('keydown', handleKeyDown);
+
+		let prevInputValue = '';
+		function handleInput(event) {
+			const inputValue = event.target.value;
+			if (inputValue.startsWith('+4 ')) {
+				// Do nothing
+			} else if (inputValue.length === 1) {
+				event.target.value = '+4 ';
+			} else {
+				event.target.value = prevInputValue;
+			}
+			prevInputValue = event.target.value;
+		}
+
+		function handleKeyDown(event) {
+			const key = event.key;
+			const inputValue = event.target.value;
+			if (key === 'Backspace' || key === 'Delete') {
+				if (inputValue.length === 4) {
+					event.preventDefault();
+					event.target.value = '';
+				} else if (inputValue.length > 4) {
+					prevInputValue = inputValue.slice(0, -1);
+				}
+			} else if (/^\d$/.test(key)) {
+				if (inputValue.length < 12) {
+					prevInputValue = inputValue + key;
+				}
+			} else {
+				event.preventDefault();
+			}
+		}
     },
     data() {
         return {
