@@ -112,13 +112,16 @@ button {
 }
 
 // // 
+
 html,
 body {
-  font-family: 'Outfit', sans-serif;
-  background: #F6F8FA;
+  font-family: 'Manrope', sans-serif;
+  background: #FFF;
 }
 
-body {}
+body {
+
+}
 
 .wrapper {
   display: flex;
@@ -137,11 +140,26 @@ body {}
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 0 20px 15px 20px;
+  padding: 0;
 }
-
+.fancybox__backdrop {
+  background: rgba(0, 0, 0, 0.39);
+}
 .carousel__button {
-  display: none;
+  top: 20px !important;
+  right: 20px !important;
+  width: 16px !important;
+  height: 16px !important;
+  &::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-image: url(../../../public/images/close-icon.svg);
+  }
+  svg {
+    display: none !important;
+  }
 }
 
 .fancybox__content :focus:not(.carousel__button.is-close) {
@@ -159,22 +177,10 @@ body {}
 }
 
 .big-wrapper {
-  max-width: 1400px;
-  width: 100%;
-
-  @include adaptiv-value('padding', 20, 15, 1);
+  position: relative;
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media (max-width: 1025px) {
-  .big-wrapper {
-    padding: 15px;
-  }
-}
-
-@media (max-width: 750px) {
-  .main {
-    padding: 15px;
-    padding-top: 15px;
-  }
-}
 </style>
